@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-md-6 top-text">
+      <p class="text=center py-5 px-5">
+        ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキの販売のECサイトになります。<br>
+        会員ではない方も商品の閲覧は出来ますが、<br>
+        購入には会員登録が必要になります。
+      </p>
+    </div>
+
+    <div class="col-md-10 offset-me-2 mt-4">
+      <h3 class="mb-3">新着商品</h3>
+        <div class="d-flex flex-wrap">
+          <% @products.last(4).each do |product| %>
+          <span class="ml-5"></span>
+          <% end %>
+        <div class="col-xs-12">
+          <%= link_to "全ての商品を見る", customer_products_path, class: "float-right" %>
+        </div>
+        </div>
+    </div>
+
+  </div>
+</div>
