@@ -1,0 +1,2 @@
+class OrderDatail < ApplicationRecord
+end
