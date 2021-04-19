@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="admin-customer-edit pt-5">
+    <h4 class="pb-3"><%= @customer.full_name %>さんの会員情報編集</h4>
+    <%= form_with(model: @customer, url: admin_customer_path(@customer), local: true) do |f| %>
+      <table class="w-100 admin-customer-show">
+        <tr class="row pb-3">
+          <td class="col-md-2">会員ID</td>
+          <td class="col-md-10"><%= @customer.id %></td>
+        </tr>
+        <tr class="row pb-3">
+          <td class="col-md-2">氏名</td>
+          <td class="col-md-10">
+            <%= f.text_field :last_name, class: "mr-4" %>
+            <%= f.text_field :first_name %>
+          </td>
+        </tr>
+        <tr class="row pb-3">
+          <td class="col-md-2">フリガナ</td>
+          <td class="col-md-10">
+            <%= f.text_field :last_name_kana, class: "mr-4" %>
+            <%= f.text_field :first_name_kana %>
+          </td>
+        </tr>
+        <tr class="row pb-3">
+          <td class="col-md-2">郵便番号</td>
+          <td class="col-md-10">
+            <%= f.text_field :postcode %>
+          </td>
+        </tr>
+        <tr class="row pb-3">
+          <td class="col-md-2">住所</td>
+          <td class="col-md-6">
+            <%= f.text_field :address, class: "w-100" %>
+          </td>
+        </tr>
+        <tr class="row pb-3">
+          <td class="col-md-2">電話番号</td>
+          <td class="col-md-10">
+            <%= f.text_field :phone %>
+          </td>
+        </tr>
+        <tr class="row pb-3">
+          <td class="col-md-2">メールアドレス</td>
+          <td class="col-md-10">
+            <%= f.email_field :email %>
+          </td>
+        </tr>
+        <tr class="row pb-3">
+          <td class="col-md-2">会員ステータス</td>
+          <td class="col-md-10">
+            <span class="admin-is_deleted-radio_button mr-3">
+              <%= f.radio_button :is_deleted, true %>
+              <%= f.label :is_deleted, '無効', value: true %>
+            </span>
+            <span class="admin-is_deleted-radio_button">
+              <%= f.radio_button :is_deleted, false %>
+              <%= f.label :is_deleted, '有効', value: false %>
+            </span>
+          </td>
+        </tr>
+        <tr class="row pb-3">
+          <td class="col-md-2"></td>
+          <td class="col-md-10">
+            <%= f.submit "変更を保存", class: "btn btn-success" %>
+          </td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

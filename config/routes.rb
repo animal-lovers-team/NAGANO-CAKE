@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins
-    namespace :admin do
+   namespace :admin do
     resources :customers,only: [:index,:show,:edit,:update]
   	resources :products,only: [:index,:new,:create,:show,:edit,:update,]
   	get 'top'=>'products#top'
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get 'about' => 'customers/products#about'
   root 'customers/products#top'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
   scope module: :customers do
     resources :products,only: [:index,:show]
     get 'customers/edit' => 'customers#edit'
@@ -36,11 +37,14 @@ Rails.application.routes.draw do
   	     patch 'out'
   	  end
 
+  
       resources :cart_items,only: [:index,:update,:create,:destroy] do
         collection do
           delete '/' => 'cart_items#all_destroy'
         end
       end
+        
+
 
       resources :orders,only: [:new,:index,:show,:create] do
         collection do
