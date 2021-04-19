@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="admin-order-index pt-5">
+    <h4 class="pb-3">注文履歴一覧</h4>
+    <table class="table">
+      <tr class="table-active">
+        <th>購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+        <th>注文ステータス</th>
+      </tr>
+      <% @orders.each do |order| %>
+        <tr>
+          <td>
+            <%= link_to admin_order_path(order), class: "text-dark" do %>
+              <%= l order.created_at %>
+            <% end %>
+          </td>
+          <td>
+            <%= order.customer.full_name %>
+          </td>
+          <td>
+            <%= order.sum_order_products.to_s(:delimited) %>
+          </td>
+          <td>
+            <%= order.order_status %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="pagenate">
+      <%= paginate @orders %>
+    </div>
+  </div>
+</div>
