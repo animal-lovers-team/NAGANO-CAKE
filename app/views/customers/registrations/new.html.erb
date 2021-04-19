@@ -1,11 +1,12 @@
 <% provide(:title, "新規会員登録") %>
+<div class="container">
 <div class="row">
   <div class="col-xs-offset-1 col-xs-11">
 
     <h2 class="head-line title_h2 text-center"><i class="fas fa-user-edit"></i>新規会員登録</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "layouts/error_messages", resource: resource %>
+      <%= render "customers/shared/error_messages", resource: resource %>
 
       <div class="field form-group col-xs-12">
         <%= f.label :"名前", class: "col-sm-2 control-label" %>
@@ -23,9 +24,26 @@
         <%= f.text_field :kana_first_name, autofocus: true, class: "col-sm-3 form-control-static name" %>
       </div>
 
-        <%= render "admin/customers/form_mail", f: f %>
+      <div class="form-group col-xs-9">
+        <%= f.label :"メールアドレス", class: "col-sm-4 control-label" %>
+        <%= f.text_field :email, class: "col-sm-6 form-control-static"%>
+      </div>
 
-        <%= render "admin/customers/form_customer", f: f %>
+
+      <div class="form-group col-xs-9">
+        <%= f.label :"郵便番号", autofocus: true, class: "col-sm-4 control-label" %>
+        <%= f.text_field :postal_code, class: "col-sm-4 form-control-static postal_code" %>
+      </div>
+
+      <div class="form-group col-xs-9">
+        <%= f.label :"住所", class: "col-sm-4 control-label" %>
+        <%= f.text_field :address, autofocus: true, class: "col-sm-8 form-control-static address"  %>
+      </div>
+
+      <div class="form-group col-xs-9">
+        <%= f.label :"電話番号", class: "col-sm-4 control-label" %>
+        <%= f.text_field :phone_number, class: "col-sm-4 form-control-static" %>
+      </div>
 
       <div class="field form-group col-xs-9">
         <%= f.label :"パスワード(6文字以上)", class: "col-sm-4 control-label" %>
@@ -37,10 +55,6 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-4 form-control-stratic" %>
       </div>
 
-      <div class="field form-group col-xs-9">
-        <%= f.label :"パスワード(確認用)", class: "col-sm-4 control-label" %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-4 form-control-stratic" %>
-      </div>
 
       <div class="action col-xs-9">
         <%= f.submit "新規登録", class: 'btn btn-success btn-lg col-xs-7' %>
@@ -52,4 +66,5 @@
       <p class="new-link"><%= render "customers/shared/links" %>からログインしてください。</p>
     </div>
   </div>
+</div>
 </div>

@@ -1,18 +1,16 @@
 class Customers::CustomersController < ApplicationController
-  before_action :authenticate_customer!, only: [:show, :edit, :update, :leave, :out]
-  before_action :rule_path, only: [:rule]
+  before_action :authenticate_customer!
 
   def show
     @customer = current_customer
   end
   
   def leave
-    @custmoer = current_customer
   end
   
   def out
     @customer = current_customer
-    @custmoer.update(is_deleted: true)
+    @customer.update(is_deleted: true)
     reset_section
     flash[:alert] = "退会が完了しました"
     redirect_to top_path

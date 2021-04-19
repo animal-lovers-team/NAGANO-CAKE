@@ -7,9 +7,9 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
           <%if customer_signed_in? %>
-    
-          <li class="header-name">
-            ようこそ、<%= last_name(current_customer) %>さん！
+
+          <li class="customer-name">
+            
           </li>
           <li class="ml-4">
             <%= link_to "マイページ", customers_path(current_customer), class: "btn btn-outline-dark" %>
@@ -18,14 +18,14 @@
             <%= link_to "商品一覧", products_path, class: "btn btn-outline-dark" %>
           </li>
           <li class="ml-4">
-            <%= link_to "カート", customer_cart_items_path, class: "btn btn-outline-dark" %>
+            <%= link_to "カート", customers_cart_items_path, class: "btn btn-outline-dark" %>
           </li>
-          <li class="ml-4">
+          <li class="ml-4 mr-4">
             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "btn btn-outline-dark" %>
           </li>
-    
+
         <% elsif admin_signed_in? %>
-    
+
           <li class="ml-4">
             <%= link_to "商品一覧", admin_products_path, class: "btn btn-outline-dark" %>
           </li>
@@ -38,16 +38,19 @@
           <li class="ml-4">
             <%= link_to "ジャンル一覧", admin_genres_path, class: "btn btn-outline-dark" %>
           </li>
-          <li class="ml-4">
+          <li class="ml-4 mr-4">
             <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-dark" %>
           </li>
-    
+
         <% else %>
           <li class="ml-4">
-            <%= link_to "商品一覧", customer_products_path, class: "btn btn-outline-dark" %>
+            <%= link_to "About", about_path, class: "btn btn-outline-dark" %>
           </li>
           <li class="ml-4">
-            <%= link_to "新規商品", new_customer_registration_path, class: "btn btn-outline-dark" %>
+            <%= link_to "商品一覧", products_path, class: "btn btn-outline-dark" %>
+          </li>
+          <li class="ml-4">
+            <%= link_to "新規登録", new_customer_registration_path, class: "btn btn-outline-dark" %>
           </li>
           <li class="ml-4">
             <%= link_to "ログイン", new_customer_session_path, class: "btn btn-outline-dark" %>

@@ -1,11 +1,12 @@
 <% provide(:title, "ログイン") %>
+<div class="container">
 <div class="row">
   <div class="col-xs-offset-1 col-xs-11">
     <h3 class="head-line title_h2 text-center">会員の方はこちらからログイン</h3>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <%= render "layouts/error_messages", resource: resource %>
-      <%= render "admins/sessions/session", f: f %>
+      <%= render "customers/shared/error_messages", resource: resource %>
+
       <div class="col-xs-6 pull-right">
         <%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name), class: "btn-link" %>
       </div>
@@ -21,4 +22,5 @@
       </p>
     </div>
   </div>
+</div>
 </div>

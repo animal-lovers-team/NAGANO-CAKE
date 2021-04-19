@@ -7,10 +7,12 @@ class Customers::ProductsController < ApplicationController
   end
   
   def index
-    @products = Product.all.page(params[:page])
+    @genres = Genre.all
+    @products = Product.where(is_sale: true).page(params[:page]).per(8)
   end
   
   def show
+    @products = Product.all
     @product = Product.find(params[:id])
     @cart_item = CartItem.new
   end
