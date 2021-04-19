@@ -11,7 +11,7 @@
     <div class="col-md-5 mx-auto">
       <h1 class="mb-5">商品編集</h1>
         <%= form_with model: @product, url: admin_product_path, local: true do |f| %>
-          <%= render 'form_item', f: f %>
+          <%= render "form_products", f: f %>
           <%= f.submit '編集する', class: "btn btn-success btn-lg pull-right d-block mx-auto" %>
         <% end %>
     </div>
