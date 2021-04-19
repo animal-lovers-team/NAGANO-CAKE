@@ -1,0 +1,17 @@
+<% provide(:title, "#{@genre.name}一覧") %>
+<h2 class="product-headlinehead-line title_h2 text-center"><%= @genre.name %>一覧</h2>
+</span>
+<div class="row">
+  <div class="col-xs-3 product-index">
+    <%= render "layouts/genre_search", products: @products %>
+  </div>
+  <div class="col-xs-9 product-index">
+      <div class="clearfix product-box">
+        <% @genres.first(6).each do |product| %>
+          <%= render "customer/products/product_each", product: product %>
+        <% end %>
+      </div>
+     <div class="text-center"><%= paginate(@genres) %></div>
+  </div>
+
+</div>
