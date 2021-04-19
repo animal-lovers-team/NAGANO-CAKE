@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-9 mx-auto">
+        <h1>商品一覧</h1>
+        <%= link_to icon("fas", "plus-circle", "新規登録"), new_admin_product_path, class: "float-right" %>
+        <table class="table table-hover table-bordered table-condensed">
+          <thead class="thead-dark">
+            <tr class="info">
+              <th>商品ID</th>
+              <th>商品名</th>
+              <th>税抜価格</th>
+              <th>ジャンル</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <% @products.each do |product| %>
+            <tr class="info">
+              <td class="table-dark col-xs-1"><%= product.id %></td>
+              <td class="text-left">
+                <%= link_to admin_product_path(product.id), class: "btn-link text-dark" do %>
+                  <%= product.name %>
+                <% end %>
+              </td>
+              <td "text-right col-xs-1"><%= product.price.to_s(:delimited) %></td>
+              <td class="text-left col-xs-3"><%= product.genre.name %></td>
+              <td class="col-xs-2">
+                <% if product.is_active == true %>
+                  <p class="text-success">販売中</p>
+                <% elsif product.is_active == false %>
+                  <p class="text-muted">販売停止中</p>
+                <% end %>
+             </td>
+            </tr>
+          <% end %>
+        </table>
+        <%= paginate @products %>
+      </div>
+  </div>
