@@ -23,7 +23,7 @@ class Customers::AddressesController < ApplicationController
     @address = Address.find(params[:id])
     @address.destroy
     flash[:alert] = "配送先を削除しました。"
-    redirect_to customer_addresses_path
+    redirect_to customers_addresses_path
   end
 
   def edit
@@ -34,7 +34,7 @@ class Customers::AddressesController < ApplicationController
     @address = Address.find(params[:id])
     if @address.update(address_params)
       flash[:notice] = "配送先情報を変更しました。"
-      redirect_to customer_addresses_path
+      redirect_to customers_addresses_path
     else
       render :edit
     end
