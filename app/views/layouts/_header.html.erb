@@ -8,13 +8,8 @@
         <ul class="navbar-nav ml-auto">
           <%if customer_signed_in? %>
 
-<<<<<<< HEAD
-          <li class="customer-name">
-            
-=======
           <li class="header-name">
-            ようこそ、<%= last_name(current_customer) %>さん！
->>>>>>> 0dc70973a6c6c162f97f9ecd23e60bece2abe4fc
+            ようこそ、<%= current_customer.last_name %>さん！
           </li>
           <li class="ml-4">
             <%= link_to "マイページ", customers_path(current_customer), class: "btn btn-outline-dark" %>

@@ -18,12 +18,6 @@ class Customers::AddressesController < ApplicationController
     end
   end
   
-  def destroy
-    @address = Address.find(params[:id])
-    @address.destroy
-    flash[:alert] = "配送先を削除しました。"
-    redirect_to customer_addresses_path
-  end
   
   def edit
     @address = Address.find(params[:id])
@@ -37,6 +31,14 @@ class Customers::AddressesController < ApplicationController
     else
       render :index
     end
+  end
+  
+  
+
+private
+
+	def address_params
+  	params.require(:address).permit(:postal_code, :address, :name)
   end
 
 
