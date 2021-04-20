@@ -12,7 +12,7 @@
           <%if customer_signed_in? %>
 
           <li class="header-name text-light">
-            ようこそ、<%= current_customer.last_name %><%= current_customer.first_name さん！
+            ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！
           </li>
           <li class="ml-4">
             <%= link_to "マイページ", customers_path(current_customer), class: "btn btn-outline-dark" %>
