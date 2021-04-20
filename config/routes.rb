@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   
   scope module: :customers do
     resources :products,only: [:index,:show]
-    get 'customers/edit' => 'customers#edit'
+    get 'customer/edit' => 'customers#edit'
     put 'customer' => 'customers#update'
 
   	resource :customers,only: [:show] do
