@@ -11,6 +11,8 @@
         <ul class="navbar-nav ml-auto">
           <%if customer_signed_in? %>
 
+          <li class="customer-name">
+
           <li class="header-name text-light">
             ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %>さん！
           </li>
