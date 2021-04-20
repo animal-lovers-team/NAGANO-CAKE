@@ -30,19 +30,12 @@ class Admin::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-      flash[:success] = "ジャンルを変更しました"
-      redirect_to admin_genres_path
-      if @genre.is_valid == false
-        @genre.products.each do |product|
-          product.is_sale = false
-          product.save
-        end
-      end
+       flash[:notice] = "You have update Genre successfully"
+       redirect_to admin_genres_path
     else
-       render :edit and return
+       render :edit
     end
   end
-
   private
 
   def genre_params

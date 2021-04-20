@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_074530) do
+ActiveRecord::Schema.define(version: 2021_04_20_055304) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.string "name", null: false
-    t.string "address", null: false
-    t.string "postal_code", null: false
+    t.string "name"
+    t.string "address"
+    t.string "postal_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_074530) do
     t.string "kana_first_name"
     t.string "kana_last_name"
     t.string "postal_code"
-    t.string "address"
+    t.string "street_address"
     t.string "phone_number"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
