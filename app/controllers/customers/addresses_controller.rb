@@ -9,10 +9,11 @@ class Customers::AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    @addresses = current_customer.addresses
+    #@addresses = current_customer.address
+
     if @address.save
       flash[:notice] = "配送先を登録しました！"
-      redirect_to customer_addresses_path
+      redirect_to customers_addresses_path
     else
       render :index
     end
@@ -35,9 +36,11 @@ class Customers::AddressesController < ApplicationController
       flash[:notice] = "配送先情報を変更しました。"
       redirect_to customer_addresses_path
     else
-      render :index
+      render :edit
     end
   end
+
+  private
 
   def address_params
   	params.require(:address).permit(:postal_code, :address, :name)
