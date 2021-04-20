@@ -1,6 +1,6 @@
 <% provide(:title, "マイページ") %>
 <div class="container">
-<div class="row">
+	<div class="row">
 	<div class="col-xs-offset-1 col-xs-8">
 		<h2 class="head-line text-center title_h2">マイページ</h2>
 		<p><strong class="information-link"><i class="far fa-user"></i>登録情報</strong>
@@ -24,7 +24,7 @@
 					</tr>
 					<tr>
 						<td class="info">住所</td>
-						<td class="text-left"><%= @customer.address %></td>
+						<td class="text-left"><%= @customer.street_address %></td>
 					</tr>
 					<tr>
 						<td class="info">電話番号</td>
