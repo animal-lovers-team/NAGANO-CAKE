@@ -2,9 +2,9 @@
 
   <h3><mark>配送先登録/一覧</mark></h3>
 
-  <div class="new-deliver-destination row mt-5 pb-5" style="margin-left: 0; margin-right: 0; padding-left: 0;">
-    <%= form_with model: @deliver_destination, url: customer_deliver_destinations_path, class: "col-12", local: true do |f| %>
-      <%= render "customer/shared/error_messages_deliver_destination", model: f.object %>
+  <div class="new-address row mt-5 pb-5" style="margin-left: 0; margin-right: 0; padding-left: 0;">
+    <%= form_with model: @address, url: customers_addresses_path, class: "col-12", local: true do |f| %>
+      <%= render "customers/shared/error_messages_address", model: f.object %>
       <%= f.label "郵便番号(ハイフンなし)", class: "col-2 mr-3" %>
       <%= f.text_field :postcode, autocomplete: "postcode", placeholder: "1500041", class: "col-2 form-ph" %>
       <div class="w-100"></div>
@@ -17,8 +17,8 @@
     <% end %>
   </div>
 
-  <div class="deliver-destination-index mt-5 row">
-    <table class="table col-md-7 deliver_destination_index_table">
+  <div class="address-index mt-5 row">
+    <table class="table col-md-7 address_index_table">
       <thead class="table-active border">
         <tr>
           <td class="border border-dark postcode">郵便番号</td>
@@ -28,14 +28,14 @@
         </tr>
       </thead>
       <tbody>
-        <% @deliver_destinations.each do |deliver_destination| %>
+        <% @addresses.each do |address| %>
           <tr>
-            <td class="border border-dark"><%= deliver_destination.postcode %></td>
-            <td class="border border-dark"><%= deliver_destination.address %></td>
-            <td class="border border-dark"><%= deliver_destination.destination %></td>
+            <td class="border border-dark"><%= address.postcode %></td>
+            <td class="border border-dark"><%= address.address %></td>
+            <td class="border border-dark"><%= address.destination %></td>
             <td class="border border-dark text-center">
-              <%= link_to "編集する", edit_customer_deliver_destination_path(deliver_destination), class: "btn btn-success" %>
-              <%= link_to "削除する", customer_deliver_destination_path(deliver_destination), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
+              <%= link_to "編集する", edit_customer_address_path(address), class: "btn btn-success" %>
+              <%= link_to "削除する", customer_address_path(address), method: :delete, class: "btn btn-danger", "data-confirm" => "本当に削除しますか？" %>
             </td>
           </tr>
         <% end %>
