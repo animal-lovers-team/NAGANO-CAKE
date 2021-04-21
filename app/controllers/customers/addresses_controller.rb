@@ -9,7 +9,7 @@ class Customers::AddressesController < ApplicationController
   def create
     @address = Address.new(address_params)
     @address.customer_id = current_customer.id
-    #@addresses = current_customer.address
+    @addresses = current_customer.addresses
 
     if @address.save
       flash[:notice] = "配送先を登録しました！"
@@ -43,7 +43,6 @@ class Customers::AddressesController < ApplicationController
   private
 
 	def address_params
-  	  params.require(:address).permit(:postal_code, :address, :name)
+  	 params.require(:address).permit(:postal_code, :address, :name)
   end
-
 end
