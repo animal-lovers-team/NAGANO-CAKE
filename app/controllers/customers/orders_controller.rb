@@ -4,8 +4,8 @@ class Customers::OrdersController < ApplicationController
 
   def new
   	@order = Order.new
-  	@shipping_addresses = ShippingAddress.where(customer: current_customer)
-	end
+  	@addresses = Address.where(customer: current_customer)
+  end
 
 	def log
     @cart_items = current_cart
