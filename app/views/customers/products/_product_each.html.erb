@@ -9,9 +9,9 @@
         <%= product.name %>
       </p>
       <% end %>
-    <% if product.is_sale == true %>
-      <p>¥<%= product.tax_out_price.to_s(:delimited) %></p>
-    <% elsif product.is_sale == false %>
+    <% if product.is_active == true %>
+      <p>¥<%= product.price.to_s(:delimited) %></p>
+    <% elsif product.is_active == false %>
       <p class="soldout">売り切れ中</p>
     <% end %>
   </div>
