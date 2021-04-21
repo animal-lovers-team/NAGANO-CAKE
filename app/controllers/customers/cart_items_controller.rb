@@ -4,13 +4,18 @@ class Customers::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_customer.cart_items
+    @total_price = 0
+    @cart_items.each do |cart_item|
+      @subtotal = (Product.find(cart_item.product_id).price * inside_cart.quantity).to_i
+      @total_price += @subtatal
+    end
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(quantity: params[:cart_item][:quantity].to_i)
     flash[:notice] = "#{@cart_item.item.name}の数量を変更しました。"
-    redirect_to customer_cart_items_path
+    redirect_to customers_cart_items_path
   end
 
   def create
@@ -22,7 +27,7 @@ class Customers::CartItemsController < ApplicationController
     end
     if @cart_item.save
       flash[:notice] = "#{@cart_item.item.name}をカートに追加しました。"
-      redirect_to customer_cart_items_path
+      redirect_to customers_cart_items_path
     else
       @item = Item.find(params[:cart_item][:item_id])
       @cart_item = CartItem.new
@@ -35,20 +40,20 @@ class Customers::CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     flash[:alert] = "#{@cart_item.item.name}を削除しました。"
-    redirect_to customer_cart_items_path
+    redirect_to customesr_cart_items_path
   end
 
   def all_destroy
     @cart_items = current_customer.cart_items
     @cart_items.destroy_all
     flash[:alert] = "カートの商品を全て削除しました。"
-    redirect_to customer_cart_items_path
+    redirect_to customers_cart_items_path
   end
 
   private
 
-  def params_cart_item
-    params.require(:cart_item).permit(:quantity, :item_id)
+  def cart_items_params
+    params.require(:cart_item).permit(:quantity, :product_id)
   end
 
   def baria_user
