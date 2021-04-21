@@ -2,7 +2,7 @@
 
   <div class="row" style="margin-left: 0; margin-right: 0;">
     <h3 class="d-inline" style="margin-bottom: 0;">ショッピングカート</h3>
-    <%= link_to "カートを空にする", customer_cart_item_all_destroy_path, method: :delete, class: "btn btn-danger d-inline ml-auto", "data-confirm" => "カート内の商品を削除してもよろしいですか？"  %>
+    <%= link_to "カートを空にする", customers_cart_items_path, method: :delete, class: "btn btn-danger d-inline ml-auto", data: {confirm:  "カート内の商品を空にしてもよろしいですか？"}  %>
   </div>
 
   <div class="cart-items-index">
@@ -19,8 +19,8 @@
       <tbody>
         <% @cart_items.each do |cart_item| %>
           <tr>
-            <td class="border border-dark"><%= cart_item.item.name %></td>
-            <td class="border border-dark"><%= tax_price(cart_item.item.price).to_s(:delimited) %></td>
+            <td class="border border-dark"><%= cart_item.product.name %></td>
+            <td class="border border-dark"><%= tax_price(cart_item.product.price).to_s(:delimited) %></td>
             <td class="border border-dark">
               <%= form_with model: cart_item, url: customer_cart_item_path(cart_item), method: :patch, class: "text-center", local: true do |f| %>
                 <%= f.number_field :quantity, min: 1, max: 10, class: "cart-item-quantity-field" %>
@@ -37,7 +37,7 @@
 
   <div class="row" style="margin-left: 0; margin-right: 0;">
 
-    <%= link_to "買い物を続ける", top_path, class: "col-3 btn btn-primary h-75" %>
+    <%= link_to "買い物を続ける", root_path, class: "col-3 btn btn-primary h-75" %>
 
     <table class="col-4 ml-auto table table-bordered border-dark" style="margin-bottom: 0;">
       <tbody>
