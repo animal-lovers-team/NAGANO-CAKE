@@ -3,15 +3,6 @@ class Customers::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   before_action :baria_user, only: [:update, :destroy]
 
-  def index
-    @cart_items = current_customer.cart_items
-    @total_price = 0
-    @cart_items.each do |cart_item|
-      @subtotal = (Product.find(cart_item.product_id).price * inside_cart.quantity).to_i
-      @total_price += @subtotal
-    end
-  end
-
 
   def update
     @cart_item = CartItem.find(params[:id])
@@ -27,20 +18,15 @@ class Customers::CartItemsController < ApplicationController
       @cart_item.quantity += @update_cart_item.quantity
       @update_cart_item.destroy
     end
-    if @cart_items.save
-      flash[:notice] = "#{@cart_items.item.name}をカートに追加しました。"
-      redirect_to customers_cart_items_path
-    else
-      @item = Item.find(params[:cart_item][:item_id])
-      @cart_items = CartItem.new
-    if @cart_item.save
+    if  @cart_item.save
       flash[:notice] = "#{@cart_item.product.name}をカートに追加しました。"
       redirect_to customers_cart_items_path
     else
-      @item = Item.find(params[:cart_item][:product_id])
+      @product = Product.find(params[:cart_item][:product_id])
       @cart_item = CartItem.new
-      flash[:alert] = "個数を選択してください。"
-      render "customer/items/show"
+      #flash[:alert] = "個数を選択してください。"
+      flash[:notice] = "個数を選択してください。"
+      render "customers/products/show"
     end
   end
 
@@ -77,3 +63,5 @@ class Customers::CartItemsController < ApplicationController
     unless CartItem.find(params[:id]).customer.id.to_i == current_customer.id
       redirect_to customers_customer_path
     end
+  end
+end
