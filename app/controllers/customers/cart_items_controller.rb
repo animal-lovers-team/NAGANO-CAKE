@@ -64,4 +64,5 @@ class Customers::CartItemsController < ApplicationController
       redirect_to customers_customer_path
     end
   end
+
 end
