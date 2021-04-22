@@ -30,7 +30,6 @@
             <td class="border border-dark"><%= (Product.find(cart_item.product_id).price * 1.1 * cart_item.quantity).to_i %></td>
             <td class="border border-dark text-center"><%= link_to "削除する", customers_cart_item_path(cart_item), method: :delete, class: "btn btn-danger", "data-confirm" => "#{cart_item.product.name}を削除してもよろしいですか？" %></td>
           </tr>
-
         <% end %>
       </tbody>
     </table>
