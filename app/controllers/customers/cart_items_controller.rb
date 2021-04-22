@@ -7,7 +7,7 @@ class Customers::CartItemsController < ApplicationController
     @total_price = 0
     @cart_items.each do |cart_item|
       @subtotal = (Product.find(cart_item.product_id).price * inside_cart.quantity).to_i
-      @total_price += @subtatal
+      @total_price += @subtotal
     end
   end
 
@@ -20,17 +20,17 @@ class Customers::CartItemsController < ApplicationController
 
   def create
     @cart_item = current_customer.cart_items.new(params_cart_item)
-    @update_cart_item = CartItem.find_by(item: @cart_item.item)
+    @update_cart_item = CartItem.find_by(product: @cart_item.product)
     if @update_cart_item.present? && @cart_item.valid?
       @cart_item.quantity += @update_cart_item.quantity
       @update_cart_item.destroy
     end
-    if @cart_item.save
-      flash[:notice] = "#{@cart_item.item.name}をカートに追加しました。"
+    if @cart_items.save
+      flash[:notice] = "#{@cart_items.item.name}をカートに追加しました。"
       redirect_to customers_cart_items_path
     else
       @item = Item.find(params[:cart_item][:item_id])
-      @cart_item = CartItem.new
+      @cart_items = CartItem.new
       flash[:alert] = "個数を選択してください。"
       render "customers/products/show"
     end
