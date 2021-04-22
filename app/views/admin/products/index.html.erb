@@ -21,7 +21,7 @@
                   <%= product.name %>
                 <% end %>
               </td>
-              <td "text-right col-xs-1"><%= product.price.to_s(:delimited) %></td>
+              <td "text-right col-xs-1"><th><%= product.price %></th></td>
               <td class="text-left col-xs-3"><%= product.genre.name %></td>
               <td class="col-xs-2">
                 <% if product.is_active == true %>
