@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :customers,only: [:index,:show,:edit,:update]
   	resources :products,only: [:index,:new,:create,:show,:edit,:update,]
   	get 'top'=>'products#top'
-  	resources :genres,only: [:index,:create,:edit,:update, :show]
+  	resources :genres,only: [:index,:create,:edit,:update,:show]
   	resources :orders,only: [:index,:show,:update] do
   	  member do
         get :current_index

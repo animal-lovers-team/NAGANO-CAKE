@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 >商品詳細()</h1>
+  <h1 >商品詳細</h1>
   <div class="row">
     <div class="mt-5 col-md-5">
         <span><%= attachment_image_tag @product, :image, format: 'jpeg', fallback: 'no_image.jpg', size:'300x200'%></sapn>
@@ -19,7 +19,7 @@
       </div>
       <div class="row">
         <p class="col-md-4">税込価格<br>(税抜価格)</p>
-        <p class="col-md-8 admin-item-price"><%= tax_price(@product.price).to_s(:delimited) %>円(<%= @product.price.to_s(:delimited) %>円)</p>
+        <p class="col-md-8 admin-item-price"><%= (@product.price * 1.1).to_i %>(<%= @product.price %>) 円 </P>
       </div>
       <div class="row">
         <p class="col-md-4">販売ステータス</p>
@@ -31,7 +31,7 @@
             <% end %>
           </p>
       </div>
-          <%= link_to "編集する", edit_admin_item_path(@product.id), class: "btn btn-success btn-lg pull-right" %>
+          <%= link_to "編集する", edit_admin_product_path(@product.id), class: "btn btn-success btn-lg pull-right" %>
     </div>
   </div>
 </div>

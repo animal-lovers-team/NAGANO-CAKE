@@ -4,8 +4,8 @@ class Customers::OrdersController < ApplicationController
 
   def new
   	@order = Order.new
-  	@shipping_addresses = ShippingAddress.where(customer: current_customer)
-	end
+  	@addresses = Address.where(customer: current_customer)
+  end
 
 	def log
     @cart_items = current_cart
@@ -16,7 +16,7 @@ class Customers::OrdersController < ApplicationController
 
     @order.price = billing(@order)
 
-    
+
     if params[:order][:addresses] == "residence"
       @order.postal_code = current_customer.postal_code
       @order.address     = current_customer.residence

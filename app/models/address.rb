@@ -6,8 +6,6 @@ class Address < ApplicationRecord
 
 	# order/newで使用
 	def order_address
-			self.postal_code + self.address + self.name
+		self.postal_code + self.address + self.name
 	end
-  
-  
 end

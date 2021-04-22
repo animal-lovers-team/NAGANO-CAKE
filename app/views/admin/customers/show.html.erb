@@ -12,19 +12,19 @@
       </tr>
       <tr class="row pb-3">
         <td class="col-md-2">フリガナ</td>
-        <td class="col-md-10"><%= @customer.full_name_kana %></td>
+        <td class="col-md-10"><%= @customer.kana_full_name %></td>
       </tr>
       <tr class="row pb-3">
         <td class="col-md-2">郵便番号</td>
-        <td class="col-md-10"><%= @customer.postcode %></td>
+        <td class="col-md-10"><%= @customer.postal_code %></td>
       </tr>
       <tr class="row pb-3">
         <td class="col-md-2">住所</td>
-        <td class="col-md-10"><%= @customer.address %></td>
+        <td class="col-md-10"><%= @customer.street_address %></td>
       </tr>
       <tr class="row pb-3">
         <td class="col-md-2">電話番号</td>
-        <td class="col-md-10"><%= @customer.phone %></td>
+        <td class="col-md-10"><%= @customer.phone_number %></td>
       </tr>
       <tr class="row pb-3">
         <td class="col-md-2">メールアドレス</td>
@@ -44,7 +44,7 @@
         <td class="col-md-2"></td>
         <td class="col-md-10">
           <%= link_to "編集する", edit_admin_customer_path(@customer), class: "btn btn-success mr-5", type: "button" %>
-          <%= link_to "注文履歴一覧を見る", admin_path(@customer), class: "btn btn-info", type: "button" %>
+          <%= link_to "注文履歴一覧を見る", admin_orders_path, class: "btn btn-info", type: "button" %>
         </td>
       </tr>
     </table>

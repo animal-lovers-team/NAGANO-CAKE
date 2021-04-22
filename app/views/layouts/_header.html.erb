@@ -15,7 +15,7 @@
             ようこそ、<%= current_customer.last_name %><%= current_customer.first_name %> さん！
           </li>
           <li class="ml-4">
-            <%= link_to "マイページ", customers_path(current_customer), class: "btn btn-outline-dark" %>
+            <%= link_to "マイページ", customers_path(@customer_last_name), class: "btn btn-outline-dark" %>
           </li>
           <li class="ml-4">
             <%= link_to "商品一覧", products_path, class: "btn btn-outline-dark" %>

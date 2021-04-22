@@ -23,6 +23,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
+
     @products = Product.all.page(params[:page]).per(10)
   end
 
@@ -44,11 +45,12 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :image, :explanation,
-       :genre_id, :price, :is_sale)
+    params.require(:product).permit(:name, :image, :introduction,
+       :genre_id, :price, :is_active)
   end
 
   def set_genres
-    @genres = Genre.where(is_valid: true)
+    @genres = Genre.where(is_active: true)
   end
+
 end
