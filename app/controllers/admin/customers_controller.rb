@@ -3,14 +3,19 @@ class Admin::CustomersController < ApplicationController
 
   def index
     @customers = Customer.page(params[:page]).per(10)
+<<<<<<< HEAD
   end
 
+=======
+	end
+	
+>>>>>>> de594743f6143aecbd95d92ee11abd00e2f014df
 	def show
-	@customer = Customer.find(params[:id])
+		@customer = Customer.find(params[:id])
 	end
 
 	def edit
-	@customer = Customer.find(params[:id])
+		@customer = Customer.find(params[:id])
 	end
 
 	def update
