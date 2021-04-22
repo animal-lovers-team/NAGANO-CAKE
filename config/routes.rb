@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   devise_for :admins
-<<<<<<< HEAD
   namespace :admin do
     resources :customers,only: [:index,:show,:edit,:update]
   	resources :products,only: [:index,:new,:create,:show,:edit,:update,]
@@ -58,11 +57,4 @@ Rails.application.routes.draw do
       resources :addresses,only: [:index,:create,:edit,:update,:destroy]
     end
   end
-=======
-  devise_for :customers
-  
-   resources :customers, only: [:show, :index, :edit, :update, :destroy]
-   #会員
-   
->>>>>>> 0c7f53481874633c1c297703a638a67984f95253
 end
