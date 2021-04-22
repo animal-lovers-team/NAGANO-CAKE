@@ -18,17 +18,17 @@ class Customers::CartItemsController < ApplicationController
       @cart_item.quantity += @update_cart_item.quantity
       @update_cart_item.destroy
     end
-    if @cart_item.save
+    if  @cart_item.save
       flash[:notice] = "#{@cart_item.product.name}をカートに追加しました。"
       redirect_to customers_cart_items_path
     else
-      @item = Item.find(params[:cart_item][:product_id])
+      @product = Product.find(params[:cart_item][:product_id])
       @cart_item = CartItem.new
-      flash[:alert] = "個数を選択してください。"
-      render "customer/items/show"
+      flash[:notice] = "個数を選択してください。"
+      render "customers/products/show"
     end
   end
-  
+
   def index
     @cart_items = current_customer.cart_items
     @sum = 0
