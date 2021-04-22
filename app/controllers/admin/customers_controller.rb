@@ -3,7 +3,7 @@ class Admin::CustomersController < ApplicationController
 
   def index
     @customers = Customer.page(params[:page]).per(10)
-	end
+  end
 
 	def show
 	@customer = Customer.find(params[:id])
@@ -29,10 +29,10 @@ class Admin::CustomersController < ApplicationController
 	  params.require(:customer).permit(
 	  	:first_name,
 	  	:last_name,
-	  	:first_name_kana,
-	  	:last_name_kana,
+	  	:kana_first_name,
+	  	:kana_last_name,
 	  	:postal_code,
-	  	:residence,
+	  	:street_address,
 	  	:phone_number,
 	  	:email,
 	  	:is_valid)
