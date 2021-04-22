@@ -14,9 +14,9 @@ ActiveRecord::Schema.define(version: 2021_04_20_055304) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "customer_id", null: false
-    t.string "name"
-    t.string "address"
-    t.string "postal_code"
+    t.string "name", null: false
+    t.string "address", null: false
+    t.string "postal_code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,8 +62,7 @@ ActiveRecord::Schema.define(version: 2021_04_20_055304) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.boolean "is_valid", default: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
