@@ -18,7 +18,7 @@ class Customer < ApplicationRecord
   end
 
 
-  has_many :deliver_destinations, dependent: :destroy
+  has_many :addresses, dependent: :destroy
   has_many :cart_items, dependent: :destroy
 
   validates :first_name, presence: true
