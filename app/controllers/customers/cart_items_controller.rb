@@ -3,7 +3,6 @@ class Customers::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   before_action :baria_user, only: [:update, :destroy]
 
-<<<<<<< HEAD
   def index
     @cart_items = current_customer.cart_items
     @total_price = 0
@@ -12,8 +11,7 @@ class Customers::CartItemsController < ApplicationController
       @total_price += @subtotal
     end
   end
-=======
->>>>>>> 99461de13d916e70700e14df802c7d7417ac9eed
+
 
   def update
     @cart_item = CartItem.find(params[:id])
@@ -79,6 +77,3 @@ class Customers::CartItemsController < ApplicationController
     unless CartItem.find(params[:id]).customer.id.to_i == current_customer.id
       redirect_to customers_customer_path
     end
-  end
-
-end
