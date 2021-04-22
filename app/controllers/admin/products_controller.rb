@@ -23,7 +23,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
-    
+
     @products = Product.all.page(params[:page]).per(10)
   end
 
@@ -52,5 +52,5 @@ class Admin::ProductsController < ApplicationController
   def set_genres
     @genres = Genre.where(is_active: true)
   end
-  
+
 end
