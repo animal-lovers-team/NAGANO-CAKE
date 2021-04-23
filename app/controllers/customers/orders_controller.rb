@@ -13,7 +13,6 @@ class Customers::OrdersController < ApplicationController
       customer: current_customer,
       payment_method: params[:order][:payment_method]
     )
-    
     @order.total_price = billing(@order)
 
 
