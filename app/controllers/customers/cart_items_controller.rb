@@ -24,7 +24,20 @@ class Customers::CartItemsController < ApplicationController
     else
       @product = Product.find(params[:cart_item][:product_id])
       @cart_item = CartItem.new
+<<<<<<< HEAD
       flash[:notice] = "個数を選択してください。"
+=======
+<<<<<<< HEAD
+      #flash[:alert] = "個数を選択してください。"
+      flash[:notice] = "個数を選択してください。"
+=======
+<<<<<<< HEAD
+      flash[:alert] = "個数を選択してください。"
+=======
+      flash[:notice] = "個数を選択してください。"
+>>>>>>> de594743f6143aecbd95d92ee11abd00e2f014df
+>>>>>>> f5214f7d0dbc69cb50ccb39802e1802e05a35eaa
+>>>>>>> 1f822cfbb139f2c1c305021a15fafa7c92593250
       render "customers/products/show"
     end
   end
@@ -63,4 +76,9 @@ class Customers::CartItemsController < ApplicationController
       redirect_to customers_customer_path
     end
   end
+<<<<<<< HEAD
+
 end
+=======
+end
+>>>>>>> f5214f7d0dbc69cb50ccb39802e1802e05a35eaa
