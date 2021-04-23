@@ -24,11 +24,7 @@ class Customers::CartItemsController < ApplicationController
     else
       @product = Product.find(params[:cart_item][:product_id])
       @cart_item = CartItem.new
-<<<<<<< HEAD
-      flash[:alert] = "個数を選択してください。"
-=======
       flash[:notice] = "個数を選択してください。"
->>>>>>> de594743f6143aecbd95d92ee11abd00e2f014df
       render "customers/products/show"
     end
   end

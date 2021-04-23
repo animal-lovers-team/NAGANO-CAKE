@@ -2,7 +2,7 @@
 <div class="row" style="margin-left: 0; margin-right: 0;">
  <div class="w-100">
 
-  <%= form_with model: @order, url:confirm_customer_orders_path, class: "offset-md-1", local: true do |f| %>
+  <%= form_with model: @order, url:log_customers_orders_path, class: "offset-md-1", local: true do |f| %>
   <h2 class="ml-4"><strong>注文情報入力</strong></h2>
    <strong>支払方法</strong>
    <div class="col-xs-10 radio ml-3">
@@ -19,14 +19,14 @@
    <div class="col-xs-10 radio ml-3">
     <%= f.radio_button :addresses, "residence", checked: true %>
     <span>ご自身の住所</span><br>
-    &nbsp&nbsp<%= "#{current_customer.postcode}""#{current_customer.address}" %><br>
-    &nbsp&nbsp<%= "#{current_customer.first_name}""#{current_customer.last_name}" %>
+    &nbsp&nbsp<%= "#{current_customer.postal_code}""#{current_customer.street_address}" %><br>
+    &nbsp&nbsp<%= "#{current_customer.last_name}""#{current_customer.first_name}" %>
    </div>
 
    <div class="col-xs-10 radio ml-3">
     <%= f.radio_button :addresses,  "registration"%>
     <span>&nbsp登録済住所から選択</span><br>
-    <%= f.collection_select(:deliver_destination_id, @deliver_destinations, :id, :order_address) %>
+    <%= f.collection_select(:addresses_id, @addresses, :id, :order_datails) %>
    </div>
 
    <div class="new-address col-xs-12 radio ml-3">

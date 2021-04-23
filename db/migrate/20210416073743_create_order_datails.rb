@@ -5,7 +5,7 @@ class CreateOrderDatails < ActiveRecord::Migration[5.2]
       t.integer :order_id, null: false
       t.integer :subprice, null: false
       t.integer :quantity, null: false
-      t.integer :production_status,default: 0, null: false
+      t.integer :production_status,default: 0
 
       t.timestamps
     end

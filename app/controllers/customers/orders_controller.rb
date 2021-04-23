@@ -8,18 +8,18 @@ class Customers::OrdersController < ApplicationController
   end
 
 	def log
-    @cart_items = current_cart
+    @cart_items = current_customer.cart_items
 		@order = Order.new(
       customer: current_customer,
       payment_method: params[:order][:payment_method]
     )
-
-    @order.price = billing(@order)
+    
+    @order.total_price = billing(@order)
 
 
     if params[:order][:addresses] == "residence"
       @order.postal_code = current_customer.postal_code
-      @order.address     = current_customer.residence
+      @order.address     = current_customer.street_address
       @order.name        = current_customer.last_name +
                            current_customer.first_name
 
