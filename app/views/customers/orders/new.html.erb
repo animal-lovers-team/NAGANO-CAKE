@@ -24,9 +24,9 @@
    </div>
 
    <div class="col-xs-10 radio ml-3">
-    <%= f.radio_button :addresses,  "registration"%>
+    <%= f.radio_button :addresses,  "addresses"%>
     <span>&nbsp登録済住所から選択</span><br>
-    <%= f.collection_select(:addresses_id, @addresses, :id, :order_address) %>
+    <%= f.collection_select(:address_id, @addresses, :id, :order_address) %>
    </div>
 
    <div class="new-address col-xs-12 radio ml-3">

@@ -26,8 +26,8 @@
     		          <%= order.name %>
     		        </td>
     		        <td>
-    		          <% order.order_datails.each do |order_datail| %>
-    		          	<%= order_datail.product.name %><br>
+    		          <% order.order_datails.each do |order_detail| %>
+    		          	<%= order_detail.product.name %><br>
     		          <% end %>
     		        </td>
     		        <td class="text-right">
