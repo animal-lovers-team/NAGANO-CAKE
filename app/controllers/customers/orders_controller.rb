@@ -1,4 +1,6 @@
 class Customers::OrdersController < ApplicationController
+  include ApplicationHelper
+
   before_action :to_log, only: [:show]
   before_action :authenticate_customer!
 
@@ -18,7 +20,7 @@ class Customers::OrdersController < ApplicationController
 
     if params[:order][:addresses] == "residence"
       @order.postal_code = current_customer.postal_code
-      @order.address     = current_customer.street_address
+      @order.shipping_address     = current_customer.street_address
       @order.name        = current_customer.last_name +
                            current_customer.first_name
 
@@ -57,7 +59,7 @@ class Customers::OrdersController < ApplicationController
     # カート商品の情報を注文商品に移動
     @cart_items = current_cart
     @cart_items.each do |cart_item|
-    OrderDetail.create(
+    OrderDatail.create(
       product:  cart_item.product,
       order:    @order,
       quantity: cart_item.quantity,
@@ -83,11 +85,11 @@ class Customers::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_price)
+    params.require(:order).permit(:postal_code, :shipping_address, :name, :payment_method, :total_price)
   end
 
   def address_params
-    params.require(:order).permit(:postal_code, :address, :name)
+    params.require(:order).permit(:postal_code, :shipping_address, :name)
   end
 
   def to_log
