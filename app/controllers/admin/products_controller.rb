@@ -23,14 +23,15 @@ class Admin::ProductsController < ApplicationController
   end
 
   def index
-
     @products = Product.all.page(params[:page]).per(10)
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def update
