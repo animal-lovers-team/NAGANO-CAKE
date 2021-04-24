@@ -20,7 +20,7 @@
                 <%= cart.product.name %>
               </td>
               <td class="text-right">
-                ¥<%= tax_price(cart.product.tax_out_price).to_s(:delimited) %>
+                ¥<%= tax_price(cart.product.price).to_s(:delimited) %>
               </td>
               <td class="text-right">
                   <%= cart.quantity %>
@@ -60,7 +60,7 @@
         <tr>
           <th  class="info">お届け先</th>
           <td class="text-left">
-            <%= "#{@order.postal_code} #{@order.address} 　#{@order.name}" %>
+            <%= "#{@order.postal_code} #{@order.shipping_address} 　#{@order.name}" %>
           </td>
         </tr>
       </table>
@@ -69,7 +69,7 @@
       <div class ="col-xs-11">
       <%= form_with model: @order, url: customers_orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :postal_code %>
-        <%= f.hidden_field :address %>
+        <%= f.hidden_field :shipping_address %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :payment_method %>
         <%= f.hidden_field :total_price %>

@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
 
   belongs_to :customer
-	has_many :order_details, dependent: :destroy
+	has_many :order_datails, dependent: :destroy
 
 	validates :customer_id, :shipping_address,:name, :postage,
 			  		:total_price, :payment_method,
