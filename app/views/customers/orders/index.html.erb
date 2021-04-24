@@ -22,11 +22,11 @@
     		        </td>
     		        <td class="text-left">
     		          <%= order.postal_code %><br>
-    		          <%= order.address %><br>
+    		          <%= order.shipping_address %><br>
     		          <%= order.name %>
     		        </td>
     		        <td>
-    		          <% order.order_details.each do |order_detail| %>
+    		          <% order.order_datails.each do |order_detail| %>
     		          	<%= order_detail.product.name %><br>
     		          <% end %>
     		        </td>

@@ -27,13 +27,13 @@ class Customers::OrdersController < ApplicationController
     elsif params[:order][:addresses] == "addresses"
       ship = Address.find(params[:order][:address_id])
       @order.postal_code = ship.postal_code
-      @order.address     = ship.address
+      @order.shipping_address     = ship.address
       @order.name        = ship.name
 
     # addressにnew_addressの値がはいっていれば
     elsif params[:order][:addresses] == "new_address"
       @order.postal_code = params[:order][:postal_code]
-      @order.address     = params[:order][:address]
+      @order.shipping_address     = params[:order][:shipping_address]
       @order.name        = params[:order][:name]
       @ship = "1"
 
