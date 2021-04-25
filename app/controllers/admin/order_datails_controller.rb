@@ -1,9 +1,9 @@
-class Admin::OrderDetailsController < ApplicationController
+class Admin::OrderDatailsController < ApplicationController
 
   before_action :authenticate_admin!
 
   def update
-  		@order_datail = OrderDetail.find(params[:id])
+  		@order_datail = OrderDatail.find(params[:id])
 		  if @order_datail.update(order_datail_params)
 		  	flash[:success] = "制作ステータスを変更しました"
 		    redirect_to admin_order_path(@order_datail.order)

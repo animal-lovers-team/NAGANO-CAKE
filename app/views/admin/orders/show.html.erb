@@ -74,7 +74,7 @@
 			            <td class="text-right">
 			              ¥<%= sub_price(order_datail).to_s(:delimited) %>
 			            </td>
-			            	<%= form_with(model: order_datail, url: admins_orders_production_status_path, method: :patch, local: true) do |f| %>
+			            	<%= form_with model: order_datail, url: admin_order_datails_path(order_datail), local: true do |f| %>
 			            <td>
 			            	<%= f.select :produciton_status, OrderDatail.produciton_statuses.keys, class: "order_status" %>
 			            	<%= f.submit '更新'  ,class: "btn btn-warning" %>
