@@ -69,7 +69,7 @@
       <div class ="col-xs-11">
       <%= form_with model: @order, url: customers_orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :postal_code %>
-        <%= f.hidden_field :shipping_address %>
+        <%= f.hidden_field :street_address %>
         <%= f.hidden_field :name %>
         <%= f.hidden_field :payment_method %>
         <%= f.hidden_field :total_price %>

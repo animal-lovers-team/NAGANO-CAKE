@@ -1,5 +1,4 @@
 class Customers::OrdersController < ApplicationController
-
   include ApplicationHelper
 
   before_action :to_log, only: [:show]
@@ -85,7 +84,7 @@ class Customers::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_price)
+    params.require(:order).permit(:postal_code, :shipping_address, :name, :payment_method, :total_price)
   end
 
   def address_params
