@@ -9,13 +9,13 @@
       </p>
     </div>
 
-    <div class="col-md-10 offset-me-2 mt-4">
-      <h3 class="mb-3">新着商品</h3>
+    <div class="col-md-12 offset-me-2 mt-4">
+      <h3 class="mb-5">新着商品</h3>
         <div class="d-flex flex-wrap">
-          <% @products.last(4).each do |product| %>
+          <% @products.last(6).each do |product| %>
             <%= render "product_each", product: product %>
           <% end %>
-        <div class="col-xs-12">
+        <div class="col-md-12">
           <%= link_to "全ての商品を見る", products_path, class: "float-right" %>
         </div>
         </div>

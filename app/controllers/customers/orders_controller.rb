@@ -49,7 +49,6 @@ class Customers::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @order.save
     flash[:notice] = "ご注文が確定しました。"
-    redirect_to thanx_customers_orders_path
 
     # もし情報入力でnew_addressの場合Addressに保存
     if params[:order][:ship] == "1"
@@ -59,7 +58,7 @@ class Customers::OrdersController < ApplicationController
     # カート商品の情報を注文商品に移動
     @cart_items = current_cart
     @cart_items.each do |cart_item|
-    OrderDatail.create(
+    OrderDatail.create!(
       product:  cart_item.product,
       order:    @order,
       quantity: cart_item.quantity,
@@ -68,6 +67,7 @@ class Customers::OrdersController < ApplicationController
     end
     # 注文完了後、カート商品を空にする
     @cart_items.destroy_all
+    redirect_to thanx_customers_orders_path
 	end
 
 	def thanx
@@ -84,7 +84,7 @@ class Customers::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:postal_code, :shipping_address, :name, :payment_method, :total_price)
+    params.require(:order).permit(:postal_code,  :shipping_address, :name, :payment_method, :total_price)
   end
 
   def address_params

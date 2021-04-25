@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   	resources :orders,only: [:index,:show,:update] do
   	  member do
         get :current_index
-        resource :order_details,only: [:update]
+        resource :order_datails,only: [:update]
       end
       collection do
         get :today_order_index
