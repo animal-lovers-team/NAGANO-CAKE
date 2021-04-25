@@ -25,17 +25,17 @@ class Customers::OrdersController < ApplicationController
                            current_customer.first_name
 
     elsif params[:order][:addresses] == "addresses"
-      ship = Address.find(params[:order][:address_id])
-      @order.postal_code = ship.postal_code
-      @order.shipping_address     = ship.address
-      @order.name        = ship.name
+      address = Address.find(params[:order][:address_id])
+      @order.postal_code = address.postal_code
+      @order.shipping_address     = address.address
+      @order.name        = address.name
 
     # addressにnew_addressの値がはいっていれば
     elsif params[:order][:addresses] == "new_address"
       @order.postal_code = params[:order][:postal_code]
       @order.shipping_address     = params[:order][:shipping_address]
       @order.name        = params[:order][:name]
-      @ship = "1"
+      @address = "1"
 
       # バリデーションがあるならエラーメッセージを表示
       unless @order.valid? == true
@@ -51,14 +51,17 @@ class Customers::OrdersController < ApplicationController
     flash[:notice] = "ご注文が確定しました。"
 
     # もし情報入力でnew_addressの場合Addressに保存
-    if params[:order][:ship] == "1"
-      current_customer.addresses.create(address_params)
+    if current_customer.addresses.create(
+      address: params[:order][:shipping_address],
+      name: params[:order][:name],
+      postal_code: params[:order][:postal_code]
+      )
     end
 
     # カート商品の情報を注文商品に移動
     @cart_items = current_cart
     @cart_items.each do |cart_item|
-    OrderDatail.create!(
+    OrderDatail.create(
       product:  cart_item.product,
       order:    @order,
       quantity: cart_item.quantity,
@@ -88,8 +91,10 @@ class Customers::OrdersController < ApplicationController
   end
 
   def address_params
-    params.require(:order).permit(:postal_code, :address, :name)
+    params.require(:order).permit(:postal_code, :shipping_address, :name)
   end
+
+
 
   def to_log
     redirect_to customers_cart_items_path if params[:id] == "log"
