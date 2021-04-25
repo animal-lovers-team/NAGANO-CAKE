@@ -1,5 +1,6 @@
 class Customers::OrdersController < ApplicationController
-   include ApplicationHelper
+   
+  include ApplicationHelper
 
   before_action :to_log, only: [:show]
   before_action :authenticate_customer!
@@ -20,20 +21,20 @@ class Customers::OrdersController < ApplicationController
 
     if params[:order][:addresses] == "residence"
       @order.postal_code = current_customer.postal_code
-      @order.address     = current_customer.street_address
+      @order.shipping_address     = current_customer.street_address
       @order.name        = current_customer.last_name +
                            current_customer.first_name
 
     elsif params[:order][:addresses] == "addresses"
       ship = Address.find(params[:order][:address_id])
       @order.postal_code = ship.postal_code
-      @order.address     = ship.address
+      @order.shipping_address     = ship.address
       @order.name        = ship.name
 
     # addressにnew_addressの値がはいっていれば
     elsif params[:order][:addresses] == "new_address"
       @order.postal_code = params[:order][:postal_code]
-      @order.address     = params[:order][:address]
+      @order.shipping_address     = params[:order][:shipping_address]
       @order.name        = params[:order][:name]
       @ship = "1"
 
@@ -51,15 +52,15 @@ class Customers::OrdersController < ApplicationController
     flash[:notice] = "ご注文が確定しました。"
     redirect_to thanx_customers_orders_path
 
-    # もし情報入力でnew_addressの場合ShippingAddressに保存
+    # もし情報入力でnew_addressの場合Addressに保存
     if params[:order][:ship] == "1"
-      current_customer.address.create(address_params)
+      current_customer.addresses.create(address_params)
     end
 
     # カート商品の情報を注文商品に移動
     @cart_items = current_cart
     @cart_items.each do |cart_item|
-    OrderDetail.create(
+    OrderDatail.create(
       product:  cart_item.product,
       order:    @order,
       quantity: cart_item.quantity,
@@ -79,13 +80,12 @@ class Customers::OrdersController < ApplicationController
 
 	def show
 	  @order = Order.find(params[:id])
-    @order_details = @order.order_details
+    @order_datails = @order.order_datails
 	end
 
   private
-
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :total_price)
+    params.require(:order).permit(:postal_code, :shipping_address, :name, :payment_method, :total_price)
   end
 
   def address_params

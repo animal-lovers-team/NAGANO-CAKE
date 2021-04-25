@@ -1,8 +1,8 @@
 class Customers::CartItemsController < ApplicationController
+  include ApplicationHelper
 
   before_action :authenticate_customer!
   before_action :baria_user, only: [:update, :destroy]
-
 
   def update
     @cart_item = CartItem.find(params[:id])
@@ -65,4 +65,3 @@ class Customers::CartItemsController < ApplicationController
   end
 
 end
-
