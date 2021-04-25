@@ -1,4 +1,6 @@
 class Customers::OrdersController < ApplicationController
+   include ApplicationHelper
+
   before_action :to_log, only: [:show]
   before_action :authenticate_customer!
 
