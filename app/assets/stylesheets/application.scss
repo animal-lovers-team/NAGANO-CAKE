@@ -16,3 +16,13 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.image-top {
+  background-image: url(森林１.jpeg);
+  background-size: 100% 100%;
+  width: 100%;
+}
+
+.image-top-mask {
+  background-color: rgba( 0, 0, 0, 0.5);
+}

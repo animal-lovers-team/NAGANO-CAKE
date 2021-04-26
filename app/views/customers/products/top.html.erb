@@ -1,16 +1,20 @@
 <div class="container">
   <div class="row">
-    <div class="mx-auto col-md-6 top-text">
-      <p class="text=center py-5 px-5">
-        ようこそ、ながのCAKEへ！<br>
-        このサイトは、ケーキの販売のECサイトになります。<br>
-        会員ではない方も商品の閲覧は出来ますが、<br>
-        購入には会員登録が必要になります。
-      </p>
+    <div class="mx-auto col-md-10 top-text">
+      <div class="image-top">
+        <div class="image-top-mask">
+          <p class="text-center text-light py-5 px-5">
+            ようこそ、ながのCAKEへ！<br>
+            このサイトは、ケーキの販売のECサイトになります。<br>
+            会員ではない方も商品の閲覧は出来ますが、<br>
+            購入には会員登録が必要になります。
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div class="col-md-12 offset-me-2 mt-4">
-      <h3 class="mb-5">新着商品</h3>
+    <div class="mx-auto col-md-10 offset-me-2 mt-4">
+      <h2 class="mb-10 btn text-white " style="background-color:#00ff7f;"><i class="fas fa-birthday-cake"></i> 新着商品</h2>
         <div class="d-flex flex-wrap">
           <% @products.last(6).each do |product| %>
             <%= render "product_each", product: product %>
