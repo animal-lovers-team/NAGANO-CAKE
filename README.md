@@ -26,12 +26,12 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 # 使用方法
 
-(ssh) git clone git@github.com:animal-lovers-team/NAGANO-CAKE.git
-(https) git clone https://github.com/animal-lovers-team/NAGANO-CAKE.git
-cd NAGANO-CAKE
-bundle install
-rails db:migrate
-rake db:seed
+- (ssh) git clone git@github.com:animal-lovers-team/NAGANO-CAKE.git
+- (https) git clone https://github.com/animal-lovers-team/NAGANO-CAKE.git
+- cd NAGANO-CAKE
+- bundle install
+- rails db:migrate
+- rake db:seed
 
 
 ## 作成者
