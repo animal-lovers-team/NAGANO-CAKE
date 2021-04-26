@@ -1,0 +1,19 @@
+<div class="text-danger">
+<% if @product.errors.any? %>
+   <span class="h4"><%= @product.errors.count %>errors prohibited this obj from being saved:</span>
+  <% @product.errors.full_messages.each do |message| %><br>
+     ・<%= message %>
+  <% end %>
+<% end %>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-md-5">
+      <h1 class="mb-5">商品新規登録</h1>
+        <%= form_with model: @product, url: admin_products_path, local: true do |f| %>
+         <%= render "form_products", f: f %>
+          <%= f.submit '新規登録', class: "btn btn-success btn-lg mx-auto d-block" %>
+        <% end %>
+    </div>
+  </div>
+</div>

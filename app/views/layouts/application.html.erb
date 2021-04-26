@@ -1,15 +1,24 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WorkGithub</title>
+    <title>ながのCAKE</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <div id="header">
+      <%= render "layouts/header" %>
+    </div>
+
+     <div class="container">
+      <div id="flash">
+        <%= render "layouts/flash" %>
+      </div>
     <%= yield %>
   </body>
 </html>
